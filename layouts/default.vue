@@ -46,23 +46,28 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-      ],
-      miniVariant: false,
-      title: 'College CRM',
-    };
-  },
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+
+@Component
+export default class Default extends Vue {
+  clipped: boolean = false;
+  drawer: boolean = false;
+  fixed: boolean = false;
+  items: any = [
+    {
+      icon: 'mdi-apps',
+      title: 'Welcome',
+      to: '/',
+    },
+    {
+      icon: 'mdi-shape-outline',
+      title: 'Categories',
+      to: '/category',
+    },
+  ];
+
+  miniVariant: boolean = false;
+  title: string = 'College CRM';
 }
 </script>

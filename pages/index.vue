@@ -45,12 +45,14 @@
   </v-row>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
 import Logo from '~/components/Logo.vue';
 
-export default {
+@Component({
   components: {
-    Logo,
-  },
-};
+    Logo
+  }
+})
+export default class Welcome extends Vue {}
 </script>
