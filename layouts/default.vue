@@ -65,6 +65,11 @@ export default class Default extends Vue {
       title: 'Categories',
       to: '/category',
     },
+    {
+      icon: 'mdi-home-group',
+      title: 'Departments',
+      to: '/departments',
+    },
   ];
 
   miniVariant: boolean = false;

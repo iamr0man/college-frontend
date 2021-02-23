@@ -1,52 +1,51 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card>
-        <v-card-title>
-          Category
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col>
-                <v-treeview
-                  v-model="selection"
-                  :items="items"
-                  selectable
-                  return-object
-                  open-all
-                />
-              </v-col>
-              <v-divider vertical></v-divider>
-              <v-col
-                class="pa-6"
-                cols="6"
+  <wrapper :title="title">
+    <template #text>
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-treeview
+              v-model="selection"
+              :items="items"
+              selectable
+              return-object
+              open-all
+            />
+          </v-col>
+          <v-divider vertical></v-divider>
+          <v-col
+            class="pa-6"
+            cols="6"
+          >
+            <template v-if="!selection.length">
+              No nodes selected.
+            </template>
+            <template v-else>
+              <div
+                v-for="node in selection"
+                :key="node.id"
               >
-                <template v-if="!selection.length">
-                  No nodes selected.
-                </template>
-                <template v-else>
-                  <div
-                    v-for="node in selection"
-                    :key="node.id"
-                  >
-                    {{ node.name }}
-                  </div>
-                </template>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+                {{ node.name }}
+              </div>
+            </template>
+          </v-col>
+        </v-row>
+      </v-container>
+    </template>
+  </wrapper>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
+import Wrapper from "~/components/common/Wrapper.vue";
 
-@Component
+@Component({
+  components: {
+    Wrapper
+  }
+})
 export default class Category extends Vue {
+  title: string = 'Category';
   selection: any = [];
   items: any = [
     {

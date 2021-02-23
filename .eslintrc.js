@@ -18,6 +18,6 @@ module.exports = {
     'no-trailing-spaces': ['error', { skipBlankLines: true }],
     'vue/html-indent': ['error', 2],
     'vue/script-indent': ['error', 2],
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    // 'no-console': ['error', { allow: ['warn', 'error'] }],
   },
 }
