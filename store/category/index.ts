@@ -1,36 +1,30 @@
-import { Module, GetterTree, MutationTree, ActionTree } from "vuex";
-import { RootState } from "~/store/types";
-import { Category, CategoryState } from "~/store/category/types";
+import { GetterTree, MutationTree, ActionTree } from "vuex";
+import { ICategory, ICategoryState } from "~/store/category/types";
 
-const state: CategoryState = {
+export const namespace = 'category';
+
+export const state = (): ICategoryState => ({
   categories: []
-};
+});
 
-const getters: GetterTree<CategoryState, RootState> = {
-  parentCategories (state): Category[] {
+export const getters: GetterTree<ICategoryState, ICategoryState> = {
+  parentCategories (state): ICategory[] {
     return state.categories.filter(v => v.ParentId === 0);
   },
-  childCategories (state): Category[] {
+  childCategories (state): ICategory[] {
     return state.categories.filter(v => v.ParentId);
   }
 };
 
-const mutations: MutationTree<CategoryState> = {
-  SET_CATEGORIES(state: CategoryState, payload: Category[]) {
+export const mutations: MutationTree<ICategoryState> = {
+  SET_CATEGORIES(state: ICategoryState, payload: ICategory[]) {
     state.categories = payload;
   }
 };
 
-const actions: ActionTree<CategoryState, RootState> = {
-  async getCategories({ commit }): Promise<Category[]> {
-    commit('SET_CATEGORIES', []);
+export const actions: ActionTree<ICategoryState, ICategoryState> = {
+  async getCategories(): Promise<ICategory[]> {
+    // commit('SET_CATEGORIES', []);
     return await this.$axios.get('http://localhost:5000/api/categories/');
   }
-};
-
-export const category: Module<CategoryState, RootState> = {
-  state,
-  getters,
-  mutations,
-  actions
 };

@@ -1,10 +1,10 @@
-export interface Category {
+export interface ICategory {
   Id: number;
   Name: string;
   ParentId: number;
 }
 
-export interface CategoryState {
-  categories: Category[];
+export interface ICategoryState {
+  categories: ICategory[];
 }
 
