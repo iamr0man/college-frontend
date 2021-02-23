@@ -5,10 +5,10 @@
         <v-card-title>
           {{ title }}
         </v-card-title>
-        <v-card-text :class="textClasses">
+        <v-card-text class="d-flex justify-center">
           <slot name="text" />
         </v-card-text>
-        <v-card-actions :class="actionClasses">
+        <v-card-actions class="d-flex justify-space-around">
           <slot name="actions"/>
         </v-card-actions>
       </v-card>
@@ -21,9 +21,7 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator';
 
 @Component
 export default class Wrapper extends Vue {
-  @Prop() title: string;
-  @Prop() cardHeight: string;
-  @Prop() textClasses: string;
-  @Prop() actionClasses: string;
+  @Prop({ default: ''}) title: string | undefined;
+  @Prop({ default: '300px'}) cardHeight: string | undefined;
 }
 </script>
