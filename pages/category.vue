@@ -1,5 +1,8 @@
 <template>
-  <wrapper :title="title">
+  <wrapper
+    :title="title"
+    height="auto"
+  >
     <template #text>
       <v-container>
         <v-row>

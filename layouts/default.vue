@@ -70,6 +70,11 @@ export default class Default extends Vue {
       title: 'Departments',
       to: '/departments',
     },
+    {
+      icon: 'mdi-account-group-outline',
+      title: 'Employees',
+      to: '/employees',
+    },
   ];
 
   miniVariant: boolean = false;

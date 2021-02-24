@@ -1,7 +1,6 @@
 <template>
   <wrapper
-    :title="title"
-    :card-height="height">
+    :title="title">
     <template #actions>
       <v-btn color="primary" @click="$router.push('departments/create')">Add new Department/Specialization</v-btn>
       <v-divider vertical/>
@@ -21,7 +20,6 @@ import Wrapper from "~/components/common/Wrapper.vue";
 })
 export default class Departments extends Vue {
   title: string = 'Department and Specialization';
-  height: string = '200px';
 }
 </script>
 

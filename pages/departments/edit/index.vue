@@ -1,7 +1,6 @@
 <template>
   <wrapper
-    :title="title"
-    :card-height="height">
+    :title="title">
     <template #text>
       <v-row justify="center" align="center">
         <v-col>
@@ -26,15 +25,26 @@
       </v-row>
     </template>
     <template #actions>
-      <v-btn class="primary" :disabled="!currentDepartment" @click="$router.push('departments/create/new')">Edit Department</v-btn>
+      <v-btn
+        class="primary"
+        @click="edit(1)"
+      >
+        Edit Department
+      </v-btn>
       <v-divider vertical/>
-      <v-btn class="primary" :disabled="!currentDepartment && !currentSpecialization" @click="create">Edit Specialization</v-btn>
+      <v-btn
+        class="primary"
+        @click="edit(4)"
+      >
+        Edit Specialization
+      </v-btn>
     </template>
   </wrapper>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
+import {Location} from "vue-router";
 import Wrapper from "~/components/common/Wrapper.vue";
 
 @Component({
@@ -42,11 +52,16 @@ import Wrapper from "~/components/common/Wrapper.vue";
     Wrapper
   }
 })
-export default class Departments extends Vue {
+export default class EditDepartments extends Vue {
   title: string = 'Department and Specialization';
 
   currentDepartment: null = null;
   currentSpecialization: null = null;
+
+  edit(id: number): void {
+    const location: Location = { path: this.$route.fullPath, query: { id: `${id}` } };
+    this.$router.push(location);
+  }
 }
 </script>
 

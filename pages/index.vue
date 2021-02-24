@@ -1,5 +1,8 @@
 <template>
-  <wrapper :title="title">
+  <wrapper
+    :title="title"
+    text-classes="flex-column"
+  >
     <template #text>
       <p>
         The College CRM is a web-application. It was created to control college content

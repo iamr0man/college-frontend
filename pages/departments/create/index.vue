@@ -1,7 +1,6 @@
 <template>
   <wrapper
     :title="title"
-    :card-height="height"
   >
     <template #text>
       <v-row justify="center" align="center">
@@ -21,7 +20,7 @@
     <template #actions>
       <v-btn
         class="primary"
-        @click="$router.push('departments/create/new')"
+        @click="$router.push('create/department')"
       >
         Add new Department
       </v-btn>
@@ -29,7 +28,7 @@
       <v-btn
         class="primary"
         :disabled="!currentDepartment"
-        @click="$router.push('departments/create/new')"
+        @click="$router.push('create/specialization')"
       >
         Add new Specialization
       </v-btn>
@@ -46,7 +45,7 @@ import Wrapper from "~/components/common/Wrapper.vue";
     Wrapper,
   }
 })
-export default class Departments extends Vue {
+export default class CreateDepartments extends Vue {
   title: string = 'Department and Specialization';
 
   currentDepartment: null = null
